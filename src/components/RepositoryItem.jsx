@@ -4,7 +4,7 @@ import RepositoryCard from "./RepositoryCard";
 const RepositoryItem = ({ item, separators }) => (
   <TouchableHighlight
     key={item.key}
-    onPress={() => this._onPress(item)}
+    // onPress={() => this._onPress(item)}
     onShowUnderlay={separators.highlight}
     onHideUnderlay={separators.unhighlight}
   >

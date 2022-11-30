@@ -31,12 +31,23 @@ const styles = StyleSheet.create({
   },
   img: { width: 70, height: 70, borderRadius: 8, alignSelf: "flex-start" },
   bottom: {
+    paddingTop: 20,
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
   },
+  countContainer: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
 });
 const RepositoryCard = ({ item }) => {
+  const kFormatter = (num) => {
+    return Math.abs(num) > 999
+      ? Math.sign(num) * (Math.abs(num) / 1000).toFixed(1) + "k"
+      : Math.sign(num) * Math.abs(num);
+  };
   return (
     <View style={styles.card}>
       <View style={styles.top}>
@@ -52,10 +63,22 @@ const RepositoryCard = ({ item }) => {
         </View>
       </View>
       <View style={styles.bottom}>
-        <Text>Stars {item.forksCount}</Text>
-        <Text>Forks {item.stargazersCount}</Text>
-        <Text>Reviews {item.ratingAverage}</Text>
-        <Text>Rating {item.reviewCount}</Text>
+        <View style={styles.countContainer}>
+          <Text fontWeight="bold">{kFormatter(item.forksCount)}</Text>
+          <Text>Stars </Text>
+        </View>
+        <View style={styles.countContainer}>
+          <Text fontWeight="bold"> {kFormatter(item.stargazersCount)}</Text>
+          <Text>Forks </Text>
+        </View>
+        <View style={styles.countContainer}>
+          <Text fontWeight="bold"> {kFormatter(item.ratingAverage)}</Text>
+          <Text>Reviews</Text>
+        </View>
+        <View style={styles.countContainer}>
+          <Text fontWeight="bold"> {kFormatter(item.reviewCount)}</Text>
+          <Text>Rating</Text>
+        </View>
       </View>
     </View>
   );
