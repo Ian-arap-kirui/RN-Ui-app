@@ -1,4 +1,4 @@
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, ScrollView } from "react-native";
 import Constants from "expo-constants";
 import Text from "./core/Text";
 import Pressable from "./core/pressable";
@@ -18,20 +18,22 @@ const styles = StyleSheet.create({
 const AppBar = () => {
   return (
     <View style={styles.container}>
-      <Pressable style={styles.appbar} backgroundColor="appBar">
-        <Link to="/sign-in">
-          <Text fontSize="heading" color="textPrimary">
-            Sign in
-          </Text>
-        </Link>
-      </Pressable>
-      <Pressable style={styles.appbar} backgroundColor="appBar">
-        <Link to="/">
-          <Text fontSize="heading" color="textPrimary">
-            Repositories
-          </Text>
-        </Link>
-      </Pressable>
+      <ScrollView horizontal>
+        <Pressable style={styles.appbar} backgroundColor="appBar">
+          <Link to="/sign-in">
+            <Text fontSize="subheading" color="textPrimary">
+              Sign in
+            </Text>
+          </Link>
+        </Pressable>
+        <Pressable style={styles.appbar} backgroundColor="appBar">
+          <Link to="/">
+            <Text fontSize="subheading" color="textPrimary">
+              Repositories
+            </Text>
+          </Link>
+        </Pressable>
+      </ScrollView>
     </View>
   );
 };
